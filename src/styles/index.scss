@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-neutral-900 text-neutral-100;
+}
+
+.highcharts {
+  &-root {
+    @apply rounded w-auto;
+    * {
+      @apply font-sans;
+    }
+  }
+  &-background {
+    @apply fill-neutral-900;
+  }
+  &-grid {
+    path {
+      @apply stroke-neutral-700;
+    }
+  }
+  &-title,
+  &-axis-labels text,
+  &-bar-series text,
+  &-series-hover {
+    @apply fill-neutral-100 #{!important};
+  }
+  &-point {
+    @apply fill-indigo-500;
+  }
+}
+
+.table {
+  @apply w-full border-collapse overflow-auto;
+  th,
+  td {
+    @apply p-2 text-start;
+  }
+}
