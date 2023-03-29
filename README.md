@@ -1,6 +1,6 @@
 # Manager Dashboard
 Manager Dashboard is a React application made with TypeScript and TailwindCSS.
-You can browse industrial mechanic metrics and make a few micro-interactions underneath the screens, thanks to [Tractian API](https://my-json-server.typicode.com/tractian/fake-api/).
+You can browse industrial mechanic metrics and make a few static micro-interactions underneath the screens, thanks to [Tractian API](https://my-json-server.typicode.com/tractian/fake-api/).
 
 ![Wallpaper](https://i.imgur.com/fW8yalB.png)
 
