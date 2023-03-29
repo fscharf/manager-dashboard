@@ -6,6 +6,7 @@ import WorkorderPage from '../workorder/workorder-page'
 const HomePage = () => {
   return (
     <>
+      <h2 className="font-bold text-2xl mb-4">Ativos</h2>
       <AssetPage renderMax={3} />
       <Link
         href="/assets"
@@ -13,6 +14,7 @@ const HomePage = () => {
       >
         Ver todos ativos <ArrowRight />
       </Link>
+      <h2 className="font-bold text-2xl mb-4">Ordens de Serviço</h2>
       <WorkorderPage renderMax={2} />
       <Link
         href="/workorders"
