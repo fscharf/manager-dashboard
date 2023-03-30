@@ -14,7 +14,7 @@ body {
     }
   }
   &-background {
-    @apply fill-neutral-900;
+    @apply fill-neutral-800;
   }
   &-grid {
     path {
@@ -33,9 +33,8 @@ body {
 }
 
 .table {
-  @apply w-full border-collapse overflow-auto;
-  th,
-  td {
+  @apply w-full min-w-max border-collapse;
+  th, td {
     @apply p-2 text-start;
   }
 }

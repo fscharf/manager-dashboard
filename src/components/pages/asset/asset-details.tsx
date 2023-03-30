@@ -166,29 +166,31 @@ const AssetDetails = () => {
               <Clock className="w-[24px] text-neutral-100" />
               Histórico
             </small>
-            <table className="mt-8 table">
-              <tr>
-                <th>Data</th>
-                <th>Status</th>
-              </tr>
-              {Array.from(currentAsset.healthHistory || [])
-                .sort(
-                  (a, b) =>
-                    new Date(b.timestamp).getTime() -
-                    new Date(a.timestamp).getTime()
-                )
-                .slice(0, 4)
-                .map((history, key) => {
-                  return (
-                    <tr key={key}>
-                      <td className="text-neutral-500">
-                        {formatDate(new Date(history.timestamp || 0))}
-                      </td>
-                      <td>{assetStatusMap.get(history.status)}</td>
-                    </tr>
+            <div className="overflow-x-auto">
+              <table className="mt-8 table">
+                <tr>
+                  <th>Data</th>
+                  <th>Status</th>
+                </tr>
+                {Array.from(currentAsset.healthHistory || [])
+                  .sort(
+                    (a, b) =>
+                      new Date(b.timestamp).getTime() -
+                      new Date(a.timestamp).getTime()
                   )
-                })}
-            </table>
+                  .slice(0, 4)
+                  .map((history, key) => {
+                    return (
+                      <tr key={key}>
+                        <td className="text-neutral-500">
+                          {formatDate(new Date(history.timestamp || 0))}
+                        </td>
+                        <td>{assetStatusMap.get(history.status)}</td>
+                      </tr>
+                    )
+                  })}
+              </table>
+            </div>
           </div>
         </section>
         <section>

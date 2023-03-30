@@ -10,7 +10,7 @@ const CompanyPage = () => {
   }, [dispatch])
 
   return (
-    <section className="p-4 rounded bg-neutral-800 w-max overflow-hidden">
+    <section className="p-4 rounded bg-neutral-800 overflow-x-auto">
       <table className="table">
         <tr>
           <th>ID</th>

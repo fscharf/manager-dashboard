@@ -3,7 +3,7 @@ import { HomePage } from 'components/pages'
 
 export default function Home() {
   return (
-    <Screen pageTitle="Destaques">
+    <Screen pageTitle="Navegue por">
       <HomePage />
     </Screen>
   )

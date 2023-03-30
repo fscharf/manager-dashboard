@@ -8,7 +8,10 @@ const Sidebar = () => {
   const routes = useRoutes()
   const router = useRouter()
 
+  const isMobile = typeof window !== 'undefined' && window.innerWidth <= 1024
+
   const handleMouseLeave = (event: React.MouseEvent<HTMLElement>) => {
+    if (isMobile) return
     event.preventDefault()
     const timeout = setTimeout(() => {
       setIsVisible(false)
@@ -17,7 +20,10 @@ const Sidebar = () => {
     return () => clearTimeout(timeout)
   }
 
-  const handleMouseEnter = () => setIsVisible(true)
+  const handleMouseEnter = () => {
+    if (isMobile) return
+    setIsVisible(true)
+  }
 
   return (
     <nav

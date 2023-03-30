@@ -20,7 +20,7 @@ const AssetPage = ({ renderMax }: Props) => {
 
   return (
     <section className="flex flex-wrap gap-4">
-      {assets?.slice(0, renderMax || assets.length).map(asset => {
+      {assets.slice(0, renderMax || assets.length).map(asset => {
         return (
           <Link
             href={`assets/${asset.id}`}

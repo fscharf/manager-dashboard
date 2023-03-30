@@ -1,28 +1,26 @@
+import { useRoutes } from 'hooks'
 import Link from 'next/link'
-import { ArrowRight } from 'react-feather'
-import { AssetPage } from '../asset'
-import WorkorderPage from '../workorder/workorder-page'
 
 const HomePage = () => {
+  const routes = useRoutes()
   return (
-    <>
-      <h2 className="font-bold text-2xl mb-4">Ativos</h2>
-      <AssetPage renderMax={3} />
-      <Link
-        href="/assets"
-        className="p-2 rounded bg-indigo-700 flex gap-2 items-center w-max hover:opacity-90 mt-4 mb-8"
-      >
-        Ver todos ativos <ArrowRight />
-      </Link>
-      <h2 className="font-bold text-2xl mb-4">Ordens de Serviço</h2>
-      <WorkorderPage renderMax={2} />
-      <Link
-        href="/workorders"
-        className="p-2 rounded bg-indigo-700 flex gap-2 items-center w-max hover:opacity-90 mt-4"
-      >
-        Ver todas ordens de serviço <ArrowRight />
-      </Link>
-    </>
+    <article className="overflow-hidden">
+      <section className="flex gap-4 overflow-auto">
+        {routes.slice(1).map(({ Icon, target, label }) => {
+          return (
+            <Link
+              href={target}
+              key={target}
+              className="flex flex-col justify-between gap-2 h-[150px] p-4 rounded w-[150px] min-w-[150px] bg-neutral-800 hover:bg-neutral-700"
+            >
+              <Icon className="w-[24px] text-indigo-600" />
+              <span className="uppercase font-bold">{label}</span>
+            </Link>
+          )
+        })}
+      </section>
+      {/** TODO: Colocar um gráfico de healthcheck aqui */}
+    </article>
   )
 }
 

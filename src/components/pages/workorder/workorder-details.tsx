@@ -51,7 +51,7 @@ export default function Details() {
         <span className="text-neutral-600">#{currentWorkorder.id}</span>{' '}
         {currentWorkorder.title}
       </h2>
-      <article className="flex gap-6 flex-col p-4 bg-neutral-800 w-max rounded">
+      <article className="flex gap-6 flex-col p-4 bg-neutral-800 md:w-max rounded base:w-full">
         <section className="flex flex-col">
           <small className="uppercase text-neutral-500 font-bold">Título</small>
           <span>{currentWorkorder.title}</span>
@@ -107,7 +107,7 @@ export default function Details() {
           </Link>
         </section>
       </article>
-      <article className="flex gap-6 flex-col p-4 bg-neutral-800 w-max rounded mt-4">
+      <article className="flex gap-6 flex-col p-4 bg-neutral-800 md:w-max rounded base:w-full mt-4">
         <h4 className="font-bold text-lg">Checklist</h4>
         {currentWorkorder.checklist?.map((checklist, key) => {
           return (

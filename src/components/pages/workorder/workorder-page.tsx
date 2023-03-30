@@ -22,7 +22,7 @@ const WorkorderPage = ({ renderMax }: Props) => {
 
   return (
     <section className="flex flex-wrap gap-4">
-      {workorders?.slice(0, renderMax || workorders.length).map(workorder => {
+      {workorders.slice(0, renderMax || workorders.length).map(workorder => {
         const asset = assets.find(asset => asset.id === workorder.assetId)
 
         return (
