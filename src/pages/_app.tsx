@@ -1,11 +1,10 @@
 import { PageWrapper } from 'components/core'
 import type { AppProps } from 'next/app'
-import dynamic from 'next/dynamic'
 import { Provider } from 'react-redux'
 import store from 'store'
 import 'styles/index.scss'
 
-function App({ Component, pageProps }: AppProps) {
+export default function App({ Component, pageProps }: AppProps) {
   return (
     <Provider store={store}>
       <PageWrapper>
@@ -14,5 +13,3 @@ function App({ Component, pageProps }: AppProps) {
     </Provider>
   )
 }
-
-export default dynamic(() => Promise.resolve(App), { ssr: false })
