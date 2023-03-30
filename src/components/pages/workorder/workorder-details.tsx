@@ -6,11 +6,21 @@ import {
 import { Screen } from 'components/core'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { useEffect } from 'react'
-import { ArrowLeft, CheckSquare, Eye, Square, Users } from 'react-feather'
+import { useEffect, useState } from 'react'
+import {
+  ArrowLeft,
+  CheckSquare,
+  Eye,
+  Square,
+  UserCheck,
+  UserPlus,
+  Users
+} from 'react-feather'
 import { actions, selectors, thunks, useDispatch, useSelector } from 'store'
 
 export default function Details() {
+  const [isEditable, setIsEditable] = useState<boolean>(false)
+
   const dispatch = useDispatch()
   const { currentWorkorder } = useSelector(selectors.workorder.getState)
   const { users } = useSelector(selectors.user.getState)
@@ -34,6 +44,8 @@ export default function Details() {
 
     if (checklistIsCompleted) {
       dispatch(actions.workorder.changeStatus(WorkorderStatus.completed))
+    } else {
+      dispatch(actions.workorder.changeStatus(WorkorderStatus.inProgress))
     }
   }, [currentWorkorder.checklist, dispatch])
 
@@ -84,14 +96,52 @@ export default function Details() {
         </section>
         <section className="flex flex-col">
           <Users className="w-[24px] stroke-neutral-500 mb-2" />
-          <span>
-            {users
-              .filter(user =>
-                currentWorkorder.assignedUserIds?.includes(user.id)
-              )
-              .map(user => user.name)
-              .join(', ')}
-          </span>
+
+          <div className="flex items-center gap-2">
+            {isEditable ? (
+              <div className="flex flex-wrap max-w-[300px] gap-2">
+                {users.map(user => {
+                  const isSelected = currentWorkorder.assignedUserIds?.includes(
+                    user.id
+                  )
+
+                  return (
+                    <span
+                      className={`p-2 rounded cursor-pointer ${
+                        isSelected
+                          ? 'border border-green-600'
+                          : 'bg-neutral-900 hover:opacity-90'
+                      }`}
+                      key={user.id}
+                      onClick={() =>
+                        isSelected
+                          ? dispatch(actions.workorder.removeUser(user.id))
+                          : dispatch(actions.workorder.addUser(user.id))
+                      }
+                    >
+                      {user.name}
+                    </span>
+                  )
+                })}
+              </div>
+            ) : (
+              <span className="flex items-center gap-2">
+                {users
+                  .filter(user =>
+                    currentWorkorder.assignedUserIds?.includes(user.id)
+                  )
+                  .map(user => user.name)
+                  .join(', ')}
+              </span>
+            )}
+            <button
+              title="Editar responsáveis"
+              className="bg-indigo-600 p-2 rounded"
+              onClick={() => setIsEditable(!isEditable)}
+            >
+              {isEditable ? <UserCheck /> : <UserPlus />}
+            </button>
+          </div>
         </section>
         <section className="flex flex-col">
           <small className="uppercase text-neutral-500 font-bold mb-2">

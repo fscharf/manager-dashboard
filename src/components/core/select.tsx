@@ -27,14 +27,14 @@ const Select = ({ defaultItem, items, onChange }: Props) => {
       </RadixSelect.Trigger>
 
       <RadixSelect.Portal>
-        <RadixSelect.Content className="bg-neutral-800 overflow-hidden p-2 rounded font-bold absolute top-auto">
+        <RadixSelect.Content className="bg-neutral-800 border-2 border-indigo-600 overflow-hidden p-2 rounded font-bold absolute top-auto">
           <RadixSelect.Viewport>
             {items.map((item, key) => {
               return (
                 <RadixSelect.Item
                   value={item.value}
                   key={key}
-                  className="relative select-none data-[disabled]:text-neutral-500 data-[disabled]:pointer-events-none data-[highlighted]:outline-none data-[highlighted]:bg-indigo-600 p-2 rounded w-full"
+                  className="cursor-pointer relative select-none data-[disabled]:text-neutral-500 data-[disabled]:pointer-events-none data-[highlighted]:outline-none data-[highlighted]:bg-indigo-600 p-2 rounded w-full"
                 >
                   <RadixSelect.ItemText>{item.label}</RadixSelect.ItemText>
                 </RadixSelect.Item>

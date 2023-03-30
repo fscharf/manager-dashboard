@@ -19,10 +19,21 @@ export const slice = createSlice({
   initialState,
   reducers: {
     completeChecklistItem(state, action: PayloadAction<number>) {
-      state.currentWorkorder.checklist[action.payload].completed = true
+      state.currentWorkorder.checklist[action.payload].completed =
+        !state.currentWorkorder.checklist[action.payload].completed
     },
     changeStatus(state, action: PayloadAction<WorkorderStatus>) {
       state.currentWorkorder.status = action.payload
+    },
+    addUser(state, action: PayloadAction<number>) {
+      state.currentWorkorder.assignedUserIds.push(action.payload)
+    },
+    removeUser(state, action: PayloadAction<number>) {
+      const payload = state.currentWorkorder.assignedUserIds.filter(
+        id => id !== action.payload
+      )
+
+      state.currentWorkorder.assignedUserIds = payload
     }
   },
   extraReducers

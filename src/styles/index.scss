@@ -24,6 +24,7 @@ body {
   &-title,
   &-axis-labels text,
   &-bar-series text,
+  &-legend-item text,
   &-series-hover {
     @apply fill-neutral-100 #{!important};
   }
@@ -34,7 +35,8 @@ body {
 
 .table {
   @apply w-full min-w-max border-collapse;
-  th, td {
+  th,
+  td {
     @apply p-2 text-start;
   }
 }

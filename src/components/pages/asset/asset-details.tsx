@@ -43,7 +43,7 @@ const AssetDetails = () => {
         {currentAsset.name}
       </h2>
       <article className="flex gap-8 flex-col">
-        <section className="flex flex-wrap gap-10 bg-neutral-800 rounded p-4 base:w-full md:w-max">
+        <section className="flex flex-wrap base:gap-6 md:gap-10 bg-neutral-800 rounded p-4 base:w-full md:w-max">
           <Image
             className="object-cover rounded h-[150px] w-[150px] min-w-[150px]"
             src={currentAsset.image}
@@ -51,7 +51,7 @@ const AssetDetails = () => {
             width={100}
             height={100}
           />
-          <div className="flex flex-col gap-10">
+          <div className="flex flex-col base:gap-6 md:gap-10">
             <div className="flex flex-col">
               <small className="uppercase text-neutral-500 font-bold">
                 Nome
@@ -67,7 +67,7 @@ const AssetDetails = () => {
               </span>
             </div>
           </div>
-          <div className="flex flex-col gap-10">
+          <div className="flex flex-col base:gap-6 md:gap-10">
             <div className="flex flex-col">
               <small className="uppercase text-neutral-500 font-bold">
                 Sensores
@@ -193,13 +193,14 @@ const AssetDetails = () => {
             </div>
           </div>
         </section>
-        <section>
+        <section className="max-w-[800px]">
           <Chart
             title="Métricas Uptime (Ligada)"
             categories={['Total de Coletas', 'Total de Horas de Coletas']}
             series={[
               {
-                type: 'bar',
+                name: 'Uptime (Ligada)',
+                type: 'column',
                 data: [
                   currentAsset.metrics?.totalCollectsUptime,
                   currentAsset.metrics?.totalUptime
